@@ -10,43 +10,230 @@
 "use strict";
 var LifeForce = 0;
 var LFx2 = 0;
+var WoundCount = 0;
+
+var isPerseverance = 0;
+var currFatigue = 0;
+var totalFatigue = 15;
+
+var currAttrition = 0;
 
 function commit() {
 	document.getElementById("table01").hidden = " ";
 	document.getElementById("table02").hidden = "";
 
 	LifeForce = document.getElementById("lifeforceVAL").value;
+	if (LifeForce <= 0) LifeForce = 10;
 	LFx2 = LifeForce * 2;
 
 	document.getElementById("lifeforceSHOW").innerHTML = LifeForce;
 	document.getElementById("lfx2").innerHTML = LFx2;
+	
+	if (document.getElementById("perseverance").checked) {
+		document.getElementById("isPerseverance").hidden = "";
+		isPerseverance = 1;
+		totalFatigue = 20;
+		document.getElementById("totalFatigue").innerHTML = totalFatigue;
+	}
+}
+
+function addWound() {
+	var X = parseInt(document.getElementById("addWound").value);
+	WoundCount += X;
+
+	if (WoundCount < 0) WoundCount = 0;
+	if (WoundCount >= LFx2) {
+		document.getElementById("isDeadWound").hidden = "";
+		document.getElementById("all").hidden = " ";
+	}
+	else
+		document.getElementById("isDeadWound").hidden = " ";
+
+	document.getElementById("currWound").innerHTML = WoundCount;
+	document.getElementById("addWound").value = 0;
+}
+
+function incrFatigue() {
+	currFatigue++;
+	document.getElementById("currFatigue").innerHTML = currFatigue;
+	showFatigue();
+}
+
+function reduFatigue() {
+	currFatigue--;
+	if (currFatigue < 0) currFatigue = 0;
+	document.getElementById("currFatigue").innerHTML = currFatigue;
+	showFatigue();
+}
+
+function showFatigue() {
+	if (isPerseverance > 0) {
+		PerseveranceFatigue();
+	}
+	else {
+		defaultFatigue();
+	}
+}
+
+function PerseveranceFatigue() {
+	document.getElementById("isDeadFatigue").hidden = " ";
+	document.getElementById("Fatigue1").hidden = " ";
+	document.getElementById("Fatigue2").hidden = " ";
+	document.getElementById("Fatigue3").hidden = " ";
+	document.getElementById("Fatigue4").hidden = " ";
+
+	if (currFatigue >= totalFatigue) {
+		document.getElementById("isDeadFatigue").hidden = "";
+		document.getElementById("all").hidden = " ";
+		return;
+	}
+	if (currFatigue >= 18) {
+		document.getElementById("Fatigue4").hidden = "";
+		return;
+	}
+	if (currFatigue >= 15) {
+		document.getElementById("Fatigue3").hidden = "";
+		return;
+	}
+	if (currFatigue >= 11) {
+		document.getElementById("Fatigue2").hidden = "";
+		return;
+	}
+	if (currFatigue >= 6) {
+		document.getElementById("Fatigue1").hidden = "";
+		return;
+	}
+}
+
+function defaultFatigue() {
+	document.getElementById("isDeadFatigue").hidden = " ";
+	document.getElementById("Fatigue1").hidden = " ";
+	document.getElementById("Fatigue2").hidden = " ";
+	document.getElementById("Fatigue3").hidden = " ";
+	document.getElementById("Fatigue4").hidden = " ";
+
+	if (currFatigue >= totalFatigue) {
+		document.getElementById("isDeadFatigue").hidden = "";
+		document.getElementById("all").hidden = " ";
+		return;
+	}
+	if (currFatigue >= 14) {
+		document.getElementById("Fatigue4").hidden = "";
+		return;
+	}
+	if (currFatigue >= 12) {
+		document.getElementById("Fatigue3").hidden = "";
+		return;
+	}
+	if (currFatigue >= 9) {
+		document.getElementById("Fatigue2").hidden = "";
+		return;
+	}
+	if (currFatigue >= 5) {
+		document.getElementById("Fatigue1").hidden = "";
+		return;
+	}
+}
+
+function incrAttrition() {
+	currAttrition++;
+	if (currAttrition > 40) currAttrition = 40;
+	document.getElementById("currAttrition").innerHTML = currAttrition;
+	if (WoundCount >= LifeForce)
+		attritionResult2();
+	else
+		attritionResult1();
+}
+
+function reduAttrition() {
+	currAttrition--;
+	if (currAttrition < 0) currAttrition = 0;
+	document.getElementById("currAttrition").innerHTML = currAttrition;
+}
+
+function attritionResult1() {
+	if ((currAttrition == 5)
+		| (currAttrition == 8)
+		| (currAttrition == 14)
+		| (currAttrition == 16)
+		| (currAttrition == 18)
+		| (currAttrition >= 20)
+	) incrFatigue();
+}
+
+function attritionResult2() {
+	incrFatigue();
+	if ((currAttrition == 5)
+		| (currAttrition == 8)
+		| (currAttrition == 14)
+		| (currAttrition == 16)
+		| (currAttrition == 18)
+		| (currAttrition >= 20)
+	) incrFatigue();
 }
 </script>
 
+<div id="outputs"></div>
+<div id="isDeadWound" hidden><h1>Dead by Wounds<h1></div>
+<div id="isDeadFatigue" hidden><h1>Dead by Fatigue<h1></div>
+
+<div id="all">
 <table id="table01">
 <tr>
 	<td><input id="lifeforceVAL" placeholder="Life Force value"></td>
 </tr>
 <tr>
-	<td><input id="fish" type="checkbox">fish</td>
+	<td><input id="perseverance" type="checkbox">Perseverance</td>
 </tr>
 <tr><td><button onclick="commit();">Commit</button></td></tr>
 </table>
+
+
 
 <table id="table02" hidden>
 <tr>
 	<td><b>Life Force:</b></td>
 	<td><span id="lifeforceSHOW"></span> (<span id="lfx2"></span>)</td>
 </tr>
+<tr id="isPerseverance" hidden><td><b>Perseverance</b></td></tr>
+<tr><td><br></td></tr>
 <tr>
 	<td><b>Wound: </b></td>
 	<td id="currWound">0</td>
 </tr>
 <tr>
 	<td><input id="addWound" value=0></td>
-	<td><button onclick=";">Add Wound</button></td>
+	<td><button onclick="addWound();">Add Wound</button></td>
 </tr>
+<tr><td><br></td></tr>
+<tr>
+	<td><b>Fatigue:</b></td>
+	<td><span id="currFatigue">0</span> / <span id="totalFatigue">15</span></td>
+</tr>
+<tr>
+	<td><button onclick="reduFatigue();">Reduce</button><button onclick="incrFatigue();">Increase</button></td>
+</tr>
+<tr><td><br></td></tr>
+<tr>
+	<td><b>Attrition:</b></td>
+	<td><span id="currAttrition">0</span> / <span id="totalAttrition">40</span></td>
+</tr>
+<tr>
+	<td><button onclick="reduAttrition();">Reduce</button><button onclick="incrAttrition();">Increase</button></td>
+</tr>
+
+
 </table>
+
+<div id="Fatigue1" hidden><b><h3><u>Level 1</u>:<br>-1 to all checks</h3></b></div>
+<div id="Fatigue2" hidden><b><h3><u>Level 2</u>:<br>-2 to all checks.<br>Movement speed halved</h3></b></div>
+<div id="Fatigue3" hidden><b><h3><u>Level 3</u>:<br>-3 to all checks.<br>Life Force and Movement speed halved</h3></b></div>
+<div id="Fatigue4" hidden><b><h3><u>Level 4</u>:<br>Unconscious.<br>-4 to all checks.<br>Life Force and Movement speed halved</h3></b></div>
+
+
+</div>
+
+
 
 </body>
 </html>
