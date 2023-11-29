@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Health Calc</title>
+<style></style>
+</head>
+<body>
+
+<script>
+"use strict";
+var LifeForce = 0;
+var LFx2 = 0;
+
+function commit() {
+	document.getElementById("table01").hidden = " ";
+	document.getElementById("table02").hidden = "";
+
+	LifeForce = document.getElementById("lifeforceVAL").value;
+	LFx2 = LifeForce * 2;
+
+	document.getElementById("lifeforceSHOW").innerHTML = LifeForce;
+	document.getElementById("lfx2").innerHTML = LFx2;
+}
+</script>
+
+<table id="table01">
+<tr>
+	<td><input id="lifeforceVAL" placeholder="Life Force value"></td>
+</tr>
+<tr>
+	<td><input id="fish" type="checkbox">fish</td>
+</tr>
+<tr><td><button onclick="commit();">Commit</button></td></tr>
+</table>
+
+<table id="table02" hidden>
+<tr>
+	<td><b>Life Force:</b></td>
+	<td><span id="lifeforceSHOW"></span> (<span id="lfx2"></span>)</td>
+</tr>
+<tr>
+	<td><b>Wound: </b></td>
+	<td id="currWound">0</td>
+</tr>
+<tr>
+	<td><input id="addWound" value=0></td>
+	<td><button onclick=";">Add Wound</button></td>
+</tr>
+</table>
+
+</body>
+</html>
