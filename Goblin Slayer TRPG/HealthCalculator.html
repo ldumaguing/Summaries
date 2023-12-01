@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Health Calc</title>
+<title>Health Calculator</title>
 <style></style>
 </head>
 <body>
@@ -19,6 +19,7 @@ var totalFatigue = 15;
 var currAttrition = 0;
 
 function commit() {
+	document.title = document.getElementById("name").value;
 	document.getElementById("table01").hidden = " ";
 	document.getElementById("table02").hidden = "";
 
@@ -139,10 +140,12 @@ function incrAttrition() {
 	currAttrition++;
 	if (currAttrition > 40) currAttrition = 40;
 	document.getElementById("currAttrition").innerHTML = currAttrition;
-	if (WoundCount >= LifeForce)
-		attritionResult2();
+	if (WoundCount >= LifeForce) {
+		incrFatigue();
+		attritionResult();
+	}
 	else
-		attritionResult1();
+		attritionResult();
 }
 
 function reduAttrition() {
@@ -151,18 +154,7 @@ function reduAttrition() {
 	document.getElementById("currAttrition").innerHTML = currAttrition;
 }
 
-function attritionResult1() {
-	if ((currAttrition == 5)
-		| (currAttrition == 8)
-		| (currAttrition == 14)
-		| (currAttrition == 16)
-		| (currAttrition == 18)
-		| (currAttrition >= 20)
-	) incrFatigue();
-}
-
-function attritionResult2() {
-	incrFatigue();
+function attritionResult() {
 	if ((currAttrition == 5)
 		| (currAttrition == 8)
 		| (currAttrition == 14)
@@ -179,6 +171,9 @@ function attritionResult2() {
 
 <div id="all">
 <table id="table01">
+<tr>
+	<td><input id="name" value="Name"></td>
+</tr>
 <tr>
 	<td><input id="lifeforceVAL" placeholder="Life Force value"></td>
 </tr>
