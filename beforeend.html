@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>The Element Object</h1>
+<h2>The insertAdjacentHTML() Method</h2>
+
+<button onclick="myFunction()">Insert</button>
+<p>Click "Insert" to insert a span <i>within</i> the header:</p>
+
+<h2 id="myH2">My Header</h2>
+
+<script>
+function myFunction() {
+  const h2 = document.getElementById("myH2");
+  let html = "<span style='color:red'>My span</span>";
+  h2.insertAdjacentHTML("beforeend", html);
+}
+</script>
+
+</body>
+</html>

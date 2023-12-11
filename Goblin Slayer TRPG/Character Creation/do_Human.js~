@@ -1,0 +1,31 @@
+"use strict";
+
+function commitProfile() {
+	document.getElementById("div0").style.display = "none";
+	document.getElementById("div1").style.display = "block";
+
+	const logging = document.getElementById("logging");
+	logging.insertAdjacentHTML("beforeend",	"<b>Name: </b>" + document.getElementById("name").value);
+
+	const age = document.getElementById("age");
+	logging.insertAdjacentHTML("beforeend",	"<br><b>Age: </b>" + age.value);
+
+	const gender = document.getElementById("gender");
+	logging.insertAdjacentHTML("beforeend",	"<br><b>Gender: </b>" + gender.value);
+	
+	const hair = document.getElementById("hair");
+	logging.insertAdjacentHTML("beforeend",	"<br><b>Hair: </b>" + hair.value);
+	
+	const eyes = document.getElementById("eyes");
+	logging.insertAdjacentHTML("beforeend",	"<br><b>Eyes: </b>" + eyes.value);
+	
+	const phystrait = document.getElementById("phystrait");
+	logging.insertAdjacentHTML("beforeend",	"<br><b>Physical Trait: </b>" + phystrait.value);
+	
+	const race = document.getElementById("race");
+	logging.insertAdjacentHTML("beforeend",	"<br><b>Race: </b>" + race.value);
+	
+	const rank = document.getElementById("rank");
+	logging.insertAdjacentHTML("beforeend",	"<br><b>Rank: </b>" + rank.value);
+}
+

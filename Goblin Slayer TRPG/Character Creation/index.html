@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Character Creation</title>
+<style></style>
+</head>
+<body>
+
+<div id="scripts">
+	<script src="profile.js"></script>
+	<script src="race.js"></script>
+</div>
+
+<div id="div0">
+	<input id="name" value="Name"><br>
+	<input id="age" value="Age"><br>
+	<input id="gender" value="Gender"><br>
+	<input id="hair" value="Hair"><br>
+	<input id="eyes" value="Eyes"><br>
+	<input id="phystrait" value="Physical Trait"><br>
+
+	<label for="race"><b>Race:</b></label>
+		<select id="race" name="race">
+			<option value="Human">Human</option>
+			<option value="Dwarf">Dwarf</option>
+			<option value="Elf">Elf</option>
+			<option value="Lizardman">Lizardman</option>
+			<option value="Rhea">Rhea</option>
+		</select>
+	<br>
+
+	<label for="rank"><b>Rank:</b></label>
+		<select id="rank" name="rank">
+			<option value="Obsidian">Obsidian</option>
+			<option value="Steel">Steel</option>
+			<option value="Sapphire">Sapphire</option>
+			<option value="Emerald">Emerald</option>
+			<option value="Ruby">Ruby</option>
+			<option value="Copper">Copper</option>
+			<option value="Silver">Silver</option>
+			<option value="Gold">Gold</option>
+		</select>
+	<br>
+
+	<button onclick="commitProfile()">Next</button>
+</div>
+
+<div id="div1" hidden>
+	<table>
+	<tr><td><b>Strength: </b></td><td><input id="str" value=""></td></tr>
+	<tr><td><b>Psyche: </b></td><td><input id="psy" value=""></td></tr>
+	<tr><td><b>Technique: </b></td><td><input id="tec" value=""></td></tr>
+	<tr><td><b>Intelligence: </b></td><td><input id="int" value=""></td></tr>
+	<tr><td><b>Focus: </b></td><td><input id="foc" value=""></td></tr>
+	<tr><td><b>Endurance: </b></td><td><input id="end" value=""></td></tr>
+	<tr><td><b>Reflex: </b></td><td><input id="rfx" value=""></td></tr>
+	</table>
+	<button onclick="commitRace();">Next</button>
+</div>
+
+<div id="logging">
+	<p><b>================================================================================</b></p>
+</div>
+
+</body>
+</html>
