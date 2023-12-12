@@ -8,7 +8,7 @@
 
 <div id="scripts">
 	<script src="profile.js"></script>
-	<script src="race.js"></script>
+	<script src="ability.js"></script>
 </div>
 
 <div id="div0">
@@ -29,8 +29,10 @@
 		</select>
 	<br>
 
+<!--
 	<label for="rank"><b>Rank:</b></label>
 		<select id="rank" name="rank">
+			<option value="Porcelain">Porcelain</option>
 			<option value="Obsidian">Obsidian</option>
 			<option value="Steel">Steel</option>
 			<option value="Sapphire">Sapphire</option>
@@ -39,9 +41,10 @@
 			<option value="Copper">Copper</option>
 			<option value="Silver">Silver</option>
 			<option value="Gold">Gold</option>
+			<option value="Platinum">Platinum</option>
 		</select>
 	<br>
-
+-->
 	<button onclick="commitProfile()">Next</button>
 </div>
 
@@ -55,7 +58,15 @@
 	<tr><td><b>Endurance: </b></td><td><input id="end" value=""></td></tr>
 	<tr><td><b>Reflex: </b></td><td><input id="rfx" value=""></td></tr>
 	</table>
-	<button onclick="commitRace();">Next</button>
+	<button onclick="commitAbility();">Next</button>
+</div>
+
+<div id="div2" hidden>
+	<b><u>History: Origin</u></b><br>
+	<select id="historyO" name="historyO">
+	</select>
+	<br>
+	<button onclick="yo();">Next</button>
 </div>
 
 <div id="logging">
