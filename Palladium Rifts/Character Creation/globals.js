@@ -68,9 +68,9 @@ function defineAttributes() {
 	if(Character.me <= 7) lowME();
 	if((Character.ps <= 7) & (Character.strType === "Human")) lowHumanPS();
 	if(Character.pp <= 7) lowPP();
+	if(Character.pe <= 7) lowPE();
 
-	if(Character.pe <= 7)
-		notes.insertAdjacentHTML("beforeend",	"<b>Low P.E.: </b>see page 284<br>");
+
 	if(Character.pb <= 7)
 		notes.insertAdjacentHTML("beforeend",	"<b>Low P.B.: </b>see page 284<br>");
 	if(Character.spd <= 6)
@@ -96,6 +96,32 @@ function defineAttributes() {
 }
 
 // *************************************************************************************************
+function lowPE() {
+	let text = "";
+	if((Character.pe == 7) | (Character.pe == 6) | (Character.pe == 5)) {
+		text += "<p class=\"notesN\">";
+		text += "<u><b>PE 5, 6, or 7</b></u><br>";
+		text += "-2 to save vs disease, -3 to save vs drugs and poison, and -3 to save vs magic. The character is also -5% to save vs coma and death and fatigues 25% faster than the average person unless he can take frequent breaks.";
+		text += "</p>";
+	}
+
+	if((Character.pe == 4) | (Character.pe == 3)) {
+		text += "<p class=\"notesN\">";
+		text += "<u><b>PE 3 or 4</b></u><br>";
+		text += "-6 to save vs disease, -5 to save vs drugs and poison, and -4 to save vs magic. -10% to save vs coma and death, fatigues 50% faster than the average person unless he can take frequent breaks, and the duration. of illness and the side effects from drugs and poisons last 25% longer. 01-60% chance the character is also a hypochondriac and has a phobia about disease and germs (roll for each).";
+		text += "</p>";
+	}
+
+	if((Character.pe == 2) | (Character.pe == 1)) {
+		text += "<p class=\"notesN\">";
+		text += "<u><b>PE 1 or 2</b></u><br>";
+		text += "-8 to save vs disease, -6 to save vs drugs and poison, and -5 to save vs magic. -20% to save vs coma and death, fatigues 75% faster than the average person unless he can take frequent rest breaks, suffers 50% more damage and double the penalties and duration from illness and the side effects from drugs, poisons, and magic.";
+		text += "</p>";
+	}
+
+	notes.insertAdjacentHTML("beforeend", text);
+}
+
 function lowPP() {
 	let text = "";
 	if((Character.pp == 7) | (Character.pp == 6) | (Character.pp == 5)) {
