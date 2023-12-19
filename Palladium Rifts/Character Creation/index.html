@@ -10,6 +10,7 @@ p.notesN, ul.notesN {
 </head>
 <body>
 <script src="globals.js"></script>
+<script src="occ.js"></script>
 
 <div id="div0">
 <b><u>ATTRIBUTES</u></b>
@@ -23,8 +24,6 @@ p.notesN, ul.notesN {
 <tr><td><b></b></td><td>
 	<select id="strType">
 		<option value="Human">Human</option>
-		<option value="Augmented">Augmented</option>
-		<option value="Robot">Robot</option>
 		<option value="Supernatural">Supernatural</option>
 	</select>
 </td></tr>
@@ -35,63 +34,75 @@ p.notesN, ul.notesN {
 <tr><td><b>Spd</b></td><td><input id="spd" type="number" value="10"></td></tr>
 
 
-<tr><td><b>O.C.C.</b></td><td>
-	<select id="occ">
-		<optgroup label="Men at Arms">
-			<option value="Arms01">Combat Cyborg, Full Conversion</option>
-			<option value="Arms02">Crazy</option>
-			<option value="Arms03">Cyber-Knight</option>
-			<option value="Arms04">Glitter Boy</option>
-			<option value="Arms05">Headhunter, Partial Cyborg</option>
-			<option value="Arms06">Juicer</option>
-			<option value="Arms07">Merc Soldier</option>
-			<option value="Arms08">Robot Pilot</option>
+<tr><td><b>Alignment</b></td><td>
+	<select id="alignment">
+		<optgroup label="Good">
+			<option value="good01">Principled</option>
+			<option value="good02">Scrupulous</option>
 		</optgroup>
-		<optgroup label="Adventurers & Scholars">
-			<option value="Adve01">Body Fixer (Doctor)</option>
-			<option value="Adve02">City Rat (Streetwise Teen Adventurer)</option>
-			<option value="Adve03">Cyber-Doc (M.D. in Cybernetics)</option>
-			<option value="Adve04">Operator (Mechanical & Electrical Engineer/Mechanic)</option>
-			<option value="Adve05">Rogue Scholar</option>
-			<option value="Adve06">Rogue Scientist</option>
-			<option value="Adve07">Vagabond (Jack-of-Many Trades, Master of None)</option>
-			<option value="Adve08">Wilderness Scout</option>
+		<optgroup label="Selfish">
+			<option value="self01">Unprincipled</option>
+			<option value="self02">Anarchist</option>
 		</optgroup>
-		<optgroup label="Practitioners of Magic">
-			<option value="Magi01">Elemental Fusionist</option>
-			<option value="Magi02">Ley Line Walker</option>
-			<option value="Magi03">Ley Line Rifter</option>
-			<option value="Magi04">Mystic (Psychic & Mage)</option>
-			<option value="Magi05">Shifter (Dimensional Travelers & Summoners)</option>
-			<option value="Magi06">Techno-Wizard (Magic & Technology as One)</option>
-		</optgroup>
-		<optgroup label="Psychics">
-			<option value="Psyc01">Burster (Pyrokinesis)</option>
-			<option value="Psyc02">Dog Boys (Coalition Dog Pack - Mutant Canines)</option>
-			<option value="Psyc03">Psi-Stalkers (Mutant Humans)</option>
-			<option value="Psyc04">Mind Melter (Master Psychic)</option>
-		</optgroup>
-		<optgroup label="Racial Character Class (R.C.C.)">
-			<option value="rcc01">Dragons</option>
-		</optgroup>
-		<optgroup label="Coalation Soldier O.C.C.s">
-			<option value="Coal01">Coalition Grunt (Soldier)</option>
-			<option value="Coal02">SAMAS Pilot, Elite RPA</option>
-			<option value="Coal03">Coalition Military Specialist</option>
-			<option value="Coal04">Coalition Technical Officer</option>
+		<optgroup label="Evil">
+			<option value="evil01">Aberrant</option>
+			<option value="evil02">Miscreant</option>
+			<option value="evil03">Diabolic</option>
 		</optgroup>
 	</select>
 </td></tr>
-
-
-
 </table>
 <br>
 <button type="button" onclick="defineAttributes();">Next</button>
 </div>
 
 <div id="div1" hidden>
-yo
+	<select id="occ">
+		<option></option>
+		<optgroup label="Men at Arms">
+			<option id="Arms01" value="Arms01" hidden>Combat Cyborg, Full Conversion</option>
+			<option id="Arms02" value="Arms02" hidden>Crazy</option>
+			<option id="Arms03" value="Arms03" hidden>Cyber-Knight</option>
+			<option id="Arms04" value="Arms04" hidden>Glitter Boy</option>
+			<option id="Arms05" value="Arms05" hidden>Headhunter, Partial Cyborg</option>
+			<option id="Arms06" value="Arms06" hidden>Juicer</option>
+			<option id="Arms07" value="Arms07" hidden>Merc Soldier</option>
+			<option id="Arms08" value="Arms08" hidden>Robot Pilot</option>
+		</optgroup>
+		<optgroup label="Adventurers & Scholars">
+			<option id="Adve01" value="Adve01" hidden>Body Fixer (Doctor)</option>
+			<option id="Adve02" value="Adve02" hidden>City Rat (Streetwise Teen Adventurer)</option>
+			<option id="Adve03" value="Adve03" hidden>Cyber-Doc (M.D. in Cybernetics)</option>
+			<option id="Adve04" value="Adve04" hidden>Operator (Mechanical & Electrical Engineer/Mechanic)</option>
+			<option id="Adve05" value="Adve05" hidden>Rogue Scholar</option>
+			<option id="Adve06" value="Adve06" hidden>Rogue Scientist</option>
+			<option id="Adve07" value="Adve07" hidden>Vagabond (Jack-of-Many Trades, Master of None)</option>
+			<option id="Adve08" value="Adve08" hidden>Wilderness Scout</option>
+		</optgroup>
+		<optgroup label="Practitioners of Magic">
+			<option id="Magi01" value="Magi01" hidden>Elemental Fusionist</option>
+			<option id="Magi02" value="Magi02" hidden>Ley Line Walker</option>
+			<option id="Magi03" value="Magi03" hidden>Ley Line Rifter</option>
+			<option id="Magi04" value="Magi04" hidden>Mystic (Psychic & Mage)</option>
+			<option id="Magi05" value="Magi05" hidden>Shifter (Dimensional Travelers & Summoners)</option>
+			<option id="Magi06" value="Magi06" hidden>Techno-Wizard (Magic & Technology as One)</option>
+		</optgroup>
+		<optgroup label="Psychics">
+			<option id="Psyc01" value="Psyc01" hidden>Burster (Pyrokinesis)</option>
+			<option id="Psyc02" value="Psyc02" hidden>Dog Boys (Coalition Dog Pack - Mutant Canines)</option>
+			<option id="Psyc03" value="Psyc03" hidden>Psi-Stalkers (Mutant Humans)</option>
+			<option id="Psyc04" value="Psyc04" hidden>Mind Melter (Master Psychic)</option>
+		</optgroup>
+		<optgroup label="Racial Character Class (R.C.C.)">
+			<option id="rcc01" value="rcc01" hidden>Dragons</option>
+		</optgroup>
+		<optgroup label="Coalation Soldier O.C.C.s">
+			<option id="Coal01" value="Coal01" hidden>Coalition Grunt (Soldier)</option>
+			<option id="Coal02" value="Coal02" hidden>SAMAS Pilot, Elite RPA</option>
+			<option id="Coal03" value="Coal03" hidden>Coalition Military Specialist</option>
+			<option id="Coal04" value="Coal04" hidden>Coalition Technical Officer</option>
+		</optgroup>
+	</select>
 </div>
 
 <div id="logging">

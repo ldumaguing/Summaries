@@ -14,7 +14,7 @@ const pe_bonusMP = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8];
 function defineAttributes() {
 	document.getElementById("div0").style.display = "none";
 	document.getElementById("div1").style.display = "block";
-	
+
 	const logging = document.getElementById("logging");
 	const notes = document.getElementById("notes");
 
@@ -93,6 +93,8 @@ function defineAttributes() {
 	if(Character.spd > 30)
 		notes.insertAdjacentHTML("beforeend",	"<b>High Spd.: </b>see page 284<br>");
 
+	Character.alignment = document.getElementById("alignment").value;
+	showOCC()
 }
 
 // *************************************************************************************************
