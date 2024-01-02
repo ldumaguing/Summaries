@@ -19,7 +19,7 @@
 <th>Cost</th>
 </tr>
 <tr><td>STR</td>
-<td><input id="str" type="number" min="0" value="10"></td><td id="strC">0</td></tr>
+<td><input id="str" type="number" min="0" value="10" onchange="calcSTR();"></td><td id="strC">0</td></tr>
 <tr><td>DEX</td>
 <td><input id="dex" type="number" min="1" value="10"></td><td id="dexC">0</td></tr>
 <tr><td>CON</td>
