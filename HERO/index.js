@@ -1,10 +1,217 @@
 "use strict";
 
+var rank = Array("Weak", "Challenged", "Average", "Skilled",
+	"Competent", "Legendary", "Superhuman");
+
+function commentA(val) {
+	if (val <= 2) return 0;
+	if (val <= 5) return 1;
+	if (val <= 10) return 2;
+	if (val <= 13) return 3;
+	if (val <= 20) return 4;
+	if (val <= 30) return 5;
+	return 6;
+};
+
+function commentB(val) {
+	if (val <= 1) return 0;
+	if (val <= 2) return 1;
+	if (val <= 3) return 2;
+	if (val <= 4) return 3;
+	if (val <= 7) return 4;
+	if (val <= 10) return 5;
+	return 6;
+};
+
+function commentC(val) {  // PD, ED
+	if (val <= 1) return 0;
+	if (val <= 2) return 1;
+	if (val <= 4) return 2;
+	if (val <= 6) return 3;
+	if (val <= 10) return 4;
+	if (val <= 15) return 5;
+	return 6;
+};
+
+function commentREC(val) {
+	if (val <= 1) return 0;
+	if (val <= 2) return 1;
+	if (val <= 4) return 2;
+	if (val <= 6) return 3;
+	if (val <= 10) return 4;
+	if (val <= 13) return 5;
+	return 6;
+};
+
+function commentEND(val) {
+	if (val <= 5) return 0;
+	if (val <= 10) return 1;
+	if (val <= 20) return 2;
+	if (val <= 26) return 3;
+	if (val <= 40) return 4;
+	if (val <= 60) return 5;
+	return 6;
+};
+
+function calcLEAP() {
+	let p = Number(document.getElementById("leaping").value);
+	let X = document.getElementById("leapingC");
+	let Y = document.getElementById("leapingY");
+	X.innerHTML = (p - 4) * 0.5;
+	Y.innerHTML = Math.floor(p * 1.09361);
+};
+
+function calcSWIM() {
+	let p = Number(document.getElementById("swimming").value);
+	let X = document.getElementById("swimmingC");
+	let Y = document.getElementById("swimmingY");
+	X.innerHTML = (p - 4) * 0.5;
+	Y.innerHTML = Math.floor(p * 1.09361);
+};
+
+function calcRUN() {
+	let p = Number(document.getElementById("running").value);
+	let X = document.getElementById("runningC");
+	let Y = document.getElementById("runningY");
+	X.innerHTML = p - 12;
+	Y.innerHTML = Math.floor(p * 1.09361);
+};
+
+function calcSPD() {
+	let p = Number(document.getElementById("spd").value) - 2;
+	let X = document.getElementById("spdC");
+	X.innerHTML = p * 10;
+};
+
+function calcSTUN() {
+	let p = Number(document.getElementById("stun").value) - 20;
+	let X = document.getElementById("stunC");
+	X.innerHTML = (p / 2.0);
+};
+
+function calcBODY() {
+	let p = Number(document.getElementById("body").value) - 10;
+	let X = document.getElementById("bodyC");
+	X.innerHTML = p;
+};
+
+function calcEND() {
+	let p = Number(document.getElementById("end").value) - 20;
+	let X = document.getElementById("endC");
+	X.innerHTML = (p / 5.0);
+	let R = document.getElementById("endR");
+	R.innerHTML = rank[commentEND(Number(document.getElementById("end").value))];
+};
+
+function calcREC() {
+	let p = Number(document.getElementById("rec").value) - 4;
+	let X = document.getElementById("recC");
+	X.innerHTML = p;
+	let R = document.getElementById("recR");
+	R.innerHTML = rank[commentREC(Number(document.getElementById("rec").value))];
+};
+
+function calcED() {
+	let p = Number(document.getElementById("ed").value) - 2;
+	let X = document.getElementById("edC");
+	X.innerHTML = p;
+	let R = document.getElementById("edR");
+	R.innerHTML = rank[commentC(Number(document.getElementById("ed").value))];
+};
+
+function calcPD() {
+	let p = Number(document.getElementById("pd").value) - 2;
+	let X = document.getElementById("pdC");
+	X.innerHTML = p;
+	let R = document.getElementById("pdR");
+	R.innerHTML = rank[commentC(Number(document.getElementById("pd").value))];
+};
+
+function calcDMCV() {
+	let p = Number(document.getElementById("dmcv").value) - 3;
+	let X = document.getElementById("dmcvC");
+	X.innerHTML = p * 5;
+	let R = document.getElementById("dmcvR");
+	R.innerHTML = rank[commentB(Number(document.getElementById("dmcv").value))];
+};
+
+function calcOMCV() {
+	let p = Number(document.getElementById("omcv").value) - 3;
+	let X = document.getElementById("omcvC");
+	X.innerHTML = p * 5;
+	let R = document.getElementById("omcvR");
+	R.innerHTML = rank[commentB(Number(document.getElementById("omcv").value))];
+};
+
+function calcDCV() {
+	let p = Number(document.getElementById("dcv").value) - 3;
+	let X = document.getElementById("dcvC");
+	X.innerHTML = p * 5;
+	let R = document.getElementById("dcvR");
+	R.innerHTML = rank[commentB(Number(document.getElementById("dcv").value))];
+};
+
+function calcOCV() {
+	let p = Number(document.getElementById("ocv").value) - 3;
+	let X = document.getElementById("ocvC");
+	X.innerHTML = p * 5;
+	let R = document.getElementById("ocvR");
+	R.innerHTML = rank[commentB(Number(document.getElementById("ocv").value))];
+};
+
 function calcSTR() {
 	let str = document.getElementById("str").value;
 	let cost = Number(str) - 10;
-	let strC = document.getElementById("strC");
-	strC.innerHTML = cost;
-}
+	let C = document.getElementById("strC");
+	C.innerHTML = cost;
+	let R = document.getElementById("strR");
+	R.innerHTML = rank[commentA(Number(str))];
+};
+
+function calcDEX() {
+	let dex = document.getElementById("dex").value;
+	let cost = Number(dex) - 10;
+	let C = document.getElementById("dexC");
+	C.innerHTML = cost * 2;
+	let R = document.getElementById("dexR");
+	R.innerHTML = rank[commentA(Number(dex))];
+};
+
+function calcCON() {
+	let con = document.getElementById("con").value;
+	let cost = Number(con) - 10;
+	let C = document.getElementById("conC");
+	C.innerHTML = cost;
+	let R = document.getElementById("conR");
+	R.innerHTML = rank[commentA(Number(con))];
+};
+
+function calcINT() {
+	let cost = Number(document.getElementById("int").value) - 10;
+	let X = document.getElementById("intC");
+	X.innerHTML = cost;
+	let R = document.getElementById("intR");
+	R.innerHTML = rank[commentA(Number(document.getElementById("int").value))];
+};
+
+function calcEGO() {
+	let p = Number(document.getElementById("ego").value) - 10;
+	let X = document.getElementById("egoC");
+	X.innerHTML = p;
+	let R = document.getElementById("egoR");
+	R.innerHTML = rank[commentA(Number(document.getElementById("ego").value))];
+};
+
+function calcPRE() {
+	let p = Number(document.getElementById("pre").value) - 10;
+	let X = document.getElementById("preC");
+	X.innerHTML = p;
+	let R = document.getElementById("preR");
+	R.innerHTML = rank[commentA(Number(document.getElementById("pre").value))];
+};
+
+
+
+
 
 
