@@ -113,12 +113,54 @@ function commentSTUN(val) {
 	return 6;
 };
 
+function commentSPD(val) {
+	if (val <= 1) return 0;
+	if (val <= 2) return 2;
+	if (val <= 3) return 3;
+	if (val <= 5) return 4;
+	if (val <= 7) return 5;
+	return 6;
+};
+
+function commentRUN(val) {
+	if (val <= 2) return 0;
+	if (val <= 6) return 1;
+	if (val <= 12) return 2;
+	if (val <= 16) return 3;
+	if (val <= 20) return 4;
+	if (val <= 26) return 5;
+	return 6;
+};
+
+function commentSWIM(val) {
+	if (val == 0) return 0;
+	if (val <= 2) return 1;
+	if (val <= 4) return 2;
+	if (val <= 6) return 3;
+	if (val <= 10) return 4;
+	if (val <= 18) return 5;
+	return 6;
+};
+
+function commentLEAP(val) {
+	if (val == 0) return 0;
+	if (val <= 2) return 1;
+	if (val <= 4) return 2;
+	if (val <= 6) return 3;
+	if (val <= 10) return 4;
+	if (val <= 22) return 5;
+	return 6;
+};
+
 function calcLEAP() {
 	let p = Number(document.getElementById("leaping").value);
 	let X = document.getElementById("leapingC");
 	let Y = document.getElementById("leapingY");
 	X.innerHTML = (p - 4) * 0.5;
 	Y.innerHTML = Math.floor(p * 1.09361);
+
+	let R = document.getElementById("leapingR");
+	R.innerHTML = rank[commentLEAP(Number(document.getElementById("leaping").value))];
 
 	character.Leaping = Number(document.getElementById("leaping").value);
 };
@@ -130,6 +172,9 @@ function calcSWIM() {
 	X.innerHTML = (p - 4) * 0.5;
 	Y.innerHTML = Math.floor(p * 1.09361);
 
+	let R = document.getElementById("swimmingR");
+	R.innerHTML = rank[commentSWIM(Number(document.getElementById("swimming").value))];
+	
 	character.Swimming = Number(document.getElementById("swimming").value);
 };
 
@@ -140,6 +185,9 @@ function calcRUN() {
 	X.innerHTML = p - 12;
 	Y.innerHTML = Math.floor(p * 1.09361);
 
+	let R = document.getElementById("runningR");
+	R.innerHTML = rank[commentRUN(Number(document.getElementById("running").value))];
+
 	character.Running = Number(document.getElementById("running").value);
 };
 
@@ -147,6 +195,8 @@ function calcSPD() {
 	let p = Number(document.getElementById("spd").value) - 2;
 	let X = document.getElementById("spdC");
 	X.innerHTML = p * 10;
+	let R = document.getElementById("spdR");
+	R.innerHTML = rank[commentSPD(Number(document.getElementById("spd").value))];
 
 	character.SPD = Number(document.getElementById("spd").value);
 };

@@ -88,7 +88,9 @@
 
 <tr><td><br></td></tr>
 <tr><td>SPD</td>
-<td><input id="spd" type="number" min="1" value="2" onchange="calcSPD();"></td><td id="spdC">0</td></tr>
+<td><input id="spd" type="number" min="1" value="2" onchange="calcSPD();"></td><td id="spdC">0</td>
+<td id="spdR">Average</td>
+</tr>
 </table>
 
 <br>
@@ -98,6 +100,7 @@
 <th>Meters</th>
 <th>Yards</th>
 <th>Cost</th>
+<th>Rank</th>
 </tr>
 
 <tr>
@@ -105,6 +108,7 @@
 <td><input id="running" type="number" min="0" value="12" onchange="calcRUN();"></td>
 <td id="runningY">13</td>
 <td id="runningC">0</td>
+<td id="runningR">Average</td>
 </tr>
 
 <tr>
@@ -112,6 +116,7 @@
 <td><input id="swimming" type="number" min="0" value="4" onchange="calcSWIM();"></td>
 <td id="swimmingY">4</td>
 <td id="swimmingC">0</td>
+<td id="swimmingR">Average</td>
 </tr>
 
 <tr>
@@ -119,6 +124,7 @@
 <td><input id="leaping" type="number" min="0" value="4" onchange="calcLEAP();"></td>
 <td id="leapingY">4</td>
 <td id="leapingC">0</td>
+<td id="leapingR">Average</td>
 </tr>
 </table>
 </div>
