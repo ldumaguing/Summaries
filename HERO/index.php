@@ -7,7 +7,7 @@
     <title>Test</title>
     <link rel="stylesheet" href="style.css">
   </head>
-  <body>
+  <body onload="reset();">
 	<script src="index.js"></script>
 
 
@@ -78,9 +78,13 @@
 
 <tr><td><br></td></tr>
 <tr><td>BODY</td>
-<td><input id="body" type="number" min="1" value="10" onchange="calcBODY();"></td><td id="bodyC">0</td></tr>
+<td><input id="body" type="number" min="1" value="10" onchange="calcBODY();"></td><td id="bodyC">0</td>
+<td id="bodyR">Average</td>
+</tr>
 <tr><td>STUN</td>
-<td><input id="stun" type="number" min="1" value="20" onchange="calcSTUN();"></td><td id="stunC">0</td></tr>
+<td><input id="stun" type="number" min="1" value="20" onchange="calcSTUN();"></td><td id="stunC">0</td>
+<td id="stunR">Average</td>
+</tr>
 
 <tr><td><br></td></tr>
 <tr><td>SPD</td>

@@ -19,7 +19,35 @@ var character = {
 	STUN: 20,
 	Running: 12,
 	Swimming: 4,
-	Leaping: 4
+	Leaping: 4,
+	Cost: 0
+};
+
+function reset() {
+	document.getElementById("str").value = 10;
+	document.getElementById("dex").value = 10;
+	document.getElementById("con").value = 10;
+	document.getElementById("int").value = 10;
+	document.getElementById("ego").value = 10;
+	document.getElementById("pre").value = 10;
+
+	document.getElementById("ocv").value = 3;
+	document.getElementById("dcv").value = 3;
+	document.getElementById("omcv").value = 3;
+	document.getElementById("dmcv").value = 3;
+
+	document.getElementById("spd").value = 2;
+	document.getElementById("pd").value = 2;
+	document.getElementById("ed").value = 2;
+
+	document.getElementById("rec").value = 4;
+	document.getElementById("end").value = 20;
+	document.getElementById("body").value = 10;
+	document.getElementById("stun").value = 20;
+
+	document.getElementById("running").value = 12;
+	document.getElementById("swimming").value = 4;
+	document.getElementById("leaping").value = 4;
 };
 
 var rank = Array("Weak", "Challenged", "Average", "Skilled",
@@ -75,6 +103,16 @@ function commentEND(val) {
 	return 6;
 };
 
+function commentSTUN(val) {
+	if (val <= 6) return 0;
+	if (val <= 11) return 1;
+	if (val <= 20) return 2;
+	if (val <= 27) return 3;
+	if (val <= 40) return 4;
+	if (val <= 60) return 5;
+	return 6;
+};
+
 function calcLEAP() {
 	let p = Number(document.getElementById("leaping").value);
 	let X = document.getElementById("leapingC");
@@ -117,6 +155,8 @@ function calcSTUN() {
 	let p = Number(document.getElementById("stun").value) - 20;
 	let X = document.getElementById("stunC");
 	X.innerHTML = (p / 2.0);
+	let R = document.getElementById("stunR");
+	R.innerHTML = rank[commentSTUN(Number(document.getElementById("stun").value))];
 
 	character.STUN = Number(document.getElementById("stun").value);
 };
@@ -125,6 +165,8 @@ function calcBODY() {
 	let p = Number(document.getElementById("body").value) - 10;
 	let X = document.getElementById("bodyC");
 	X.innerHTML = p;
+	let R = document.getElementById("bodyR");
+	R.innerHTML = rank[commentA(Number(document.getElementById("body").value))];
 
 	character.BODY = Number(document.getElementById("body").value);
 };
