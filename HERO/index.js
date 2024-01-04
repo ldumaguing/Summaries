@@ -1,4 +1,26 @@
 "use strict";
+var character = {
+	STR: 10,
+	DEX: 10,
+	CON: 10,
+	INT: 10,
+	EGO: 10,
+	PRE: 10,
+	OCV: 3,
+	DCV: 3,
+	OMCV: 3,
+	DMCV: 3,
+	SPD: 2,
+	PD: 2,
+	ED: 2,
+	REC: 4,
+	END: 20,
+	BODY: 10,
+	STUN: 20,
+	Running: 12,
+	Swimming: 4,
+	Leaping: 4
+};
 
 var rank = Array("Weak", "Challenged", "Average", "Skilled",
 	"Competent", "Legendary", "Superhuman");
@@ -59,6 +81,8 @@ function calcLEAP() {
 	let Y = document.getElementById("leapingY");
 	X.innerHTML = (p - 4) * 0.5;
 	Y.innerHTML = Math.floor(p * 1.09361);
+
+	character.Leaping = Number(document.getElementById("leaping").value);
 };
 
 function calcSWIM() {
@@ -67,6 +91,8 @@ function calcSWIM() {
 	let Y = document.getElementById("swimmingY");
 	X.innerHTML = (p - 4) * 0.5;
 	Y.innerHTML = Math.floor(p * 1.09361);
+
+	character.Swimming = Number(document.getElementById("swimming").value);
 };
 
 function calcRUN() {
@@ -75,24 +101,32 @@ function calcRUN() {
 	let Y = document.getElementById("runningY");
 	X.innerHTML = p - 12;
 	Y.innerHTML = Math.floor(p * 1.09361);
+
+	character.Running = Number(document.getElementById("running").value);
 };
 
 function calcSPD() {
 	let p = Number(document.getElementById("spd").value) - 2;
 	let X = document.getElementById("spdC");
 	X.innerHTML = p * 10;
+
+	character.SPD = Number(document.getElementById("spd").value);
 };
 
 function calcSTUN() {
 	let p = Number(document.getElementById("stun").value) - 20;
 	let X = document.getElementById("stunC");
 	X.innerHTML = (p / 2.0);
+
+	character.STUN = Number(document.getElementById("stun").value);
 };
 
 function calcBODY() {
 	let p = Number(document.getElementById("body").value) - 10;
 	let X = document.getElementById("bodyC");
 	X.innerHTML = p;
+
+	character.BODY = Number(document.getElementById("body").value);
 };
 
 function calcEND() {
@@ -101,6 +135,8 @@ function calcEND() {
 	X.innerHTML = (p / 5.0);
 	let R = document.getElementById("endR");
 	R.innerHTML = rank[commentEND(Number(document.getElementById("end").value))];
+
+	character.END = Number(document.getElementById("end").value);
 };
 
 function calcREC() {
@@ -109,6 +145,8 @@ function calcREC() {
 	X.innerHTML = p;
 	let R = document.getElementById("recR");
 	R.innerHTML = rank[commentREC(Number(document.getElementById("rec").value))];
+
+	character.REC = Number(document.getElementById("rec").value);
 };
 
 function calcED() {
@@ -117,6 +155,8 @@ function calcED() {
 	X.innerHTML = p;
 	let R = document.getElementById("edR");
 	R.innerHTML = rank[commentC(Number(document.getElementById("ed").value))];
+
+	character.ED = Number(document.getElementById("ed").value);
 };
 
 function calcPD() {
@@ -125,6 +165,8 @@ function calcPD() {
 	X.innerHTML = p;
 	let R = document.getElementById("pdR");
 	R.innerHTML = rank[commentC(Number(document.getElementById("pd").value))];
+
+	character.PD = Number(document.getElementById("pd").value);
 };
 
 function calcDMCV() {
@@ -133,6 +175,8 @@ function calcDMCV() {
 	X.innerHTML = p * 5;
 	let R = document.getElementById("dmcvR");
 	R.innerHTML = rank[commentB(Number(document.getElementById("dmcv").value))];
+
+	character.DMCV = Number(document.getElementById("dmcv").value);
 };
 
 function calcOMCV() {
@@ -141,6 +185,8 @@ function calcOMCV() {
 	X.innerHTML = p * 5;
 	let R = document.getElementById("omcvR");
 	R.innerHTML = rank[commentB(Number(document.getElementById("omcv").value))];
+
+	character.OMCV = Number(document.getElementById("omcv").value);
 };
 
 function calcDCV() {
@@ -149,6 +195,8 @@ function calcDCV() {
 	X.innerHTML = p * 5;
 	let R = document.getElementById("dcvR");
 	R.innerHTML = rank[commentB(Number(document.getElementById("dcv").value))];
+
+	character.DCV = Number(document.getElementById("dcv").value);
 };
 
 function calcOCV() {
@@ -157,6 +205,8 @@ function calcOCV() {
 	X.innerHTML = p * 5;
 	let R = document.getElementById("ocvR");
 	R.innerHTML = rank[commentB(Number(document.getElementById("ocv").value))];
+
+	character.OCV = Number(document.getElementById("ocv").value);
 };
 
 function calcSTR() {
@@ -166,6 +216,8 @@ function calcSTR() {
 	C.innerHTML = cost;
 	let R = document.getElementById("strR");
 	R.innerHTML = rank[commentA(Number(str))];
+
+	character.STR = Number(str);
 };
 
 function calcDEX() {
@@ -175,6 +227,8 @@ function calcDEX() {
 	C.innerHTML = cost * 2;
 	let R = document.getElementById("dexR");
 	R.innerHTML = rank[commentA(Number(dex))];
+
+	character.DEX = Number(dex);
 };
 
 function calcCON() {
@@ -184,6 +238,8 @@ function calcCON() {
 	C.innerHTML = cost;
 	let R = document.getElementById("conR");
 	R.innerHTML = rank[commentA(Number(con))];
+
+	character.CON = Number(con);
 };
 
 function calcINT() {
@@ -192,6 +248,8 @@ function calcINT() {
 	X.innerHTML = cost;
 	let R = document.getElementById("intR");
 	R.innerHTML = rank[commentA(Number(document.getElementById("int").value))];
+
+	character.INT = Number(document.getElementById("int").value);
 };
 
 function calcEGO() {
@@ -200,6 +258,8 @@ function calcEGO() {
 	X.innerHTML = p;
 	let R = document.getElementById("egoR");
 	R.innerHTML = rank[commentA(Number(document.getElementById("ego").value))];
+
+	character.EGO = Number(document.getElementById("ego").value);
 };
 
 function calcPRE() {
@@ -208,6 +268,8 @@ function calcPRE() {
 	X.innerHTML = p;
 	let R = document.getElementById("preR");
 	R.innerHTML = rank[commentA(Number(document.getElementById("pre").value))];
+
+	character.PRE = Number(document.getElementById("pre").value);
 };
 
 
