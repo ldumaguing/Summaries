@@ -377,7 +377,22 @@ function calculate() {
 	cost += ((Number(character.DCV) - 3) * 5);
 	cost += ((Number(character.OMCV) - 3) * 5);
 	cost += ((Number(character.DMCV) - 3) * 5);
-	
+
+	cost += Number(character.PD) - 2;
+	cost += Number(character.ED) - 2;
+
+	cost += Number(character.REC) - 4;
+	cost += ((Number(character.END) - 20) * 0.2);
+
+	cost += Number(character.BODY) - 10;
+	cost += ((Number(character.STUN) - 20) * 0.5);
+
+	cost += ((Number(character.SPD) - 2) * 10);
+
+	cost += Number(character.Running) - 12;
+	cost += ((Number(character.Swimming) - 4) * 0.5);
+	cost += ((Number(character.Leaping) - 4) * 0.5);
+
 	document.getElementById("cost").innerHTML = cost;
 }
 
