@@ -128,7 +128,12 @@
 </tr>
 </table>
 </div>
+<br>
+<div>
 
+<button type="button" onclick="calculate();">Calculate Cost</button>
+<b><span id="cost">0</span> points</b>
+</div>
 
 
 

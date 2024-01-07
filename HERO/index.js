@@ -1,4 +1,5 @@
 "use strict";
+
 var character = {
 	STR: 10,
 	DEX: 10,
@@ -364,7 +365,21 @@ function calcPRE() {
 	character.PRE = Number(document.getElementById("pre").value);
 };
 
-
+function calculate() {
+	let cost = Number(character.STR) - 10;
+	cost += ((Number(character.DEX) - 10) * 2);
+	cost += Number(character.CON) - 10;
+	cost += Number(character.INT) - 10;
+	cost += Number(character.EGO) - 10;
+	cost += Number(character.PRE) - 10;
+	
+	cost += ((Number(character.OCV) - 3) * 5);
+	cost += ((Number(character.DCV) - 3) * 5);
+	cost += ((Number(character.OMCV) - 3) * 5);
+	cost += ((Number(character.DMCV) - 3) * 5);
+	
+	document.getElementById("cost").innerHTML = cost;
+}
 
 
 
