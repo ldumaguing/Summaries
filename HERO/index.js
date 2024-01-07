@@ -1,5 +1,8 @@
 "use strict";
 
+// kg = 2.2046226218 lbs
+const kg2lbs  = 2.2046226218;
+
 var character = {
 	STR: 10,
 	DEX: 10,

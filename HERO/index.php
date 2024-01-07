@@ -18,10 +18,17 @@
 <th>Value</th>
 <th>Cost</th>
 <th>Rank</th>
+<th>Notes</th>
 </tr>
 <tr><td>STR</td>
 <td><input id="str" type="number" min="1" value="10" onchange="calcSTR();"></td><td id="strC">0</td>
-<td id="strR">Average</td></tr>
+<td id="strR">Average</td>
+<td>Lift 100 kg (220 lbs); 2d HTH damage [1]</td>
+</tr>
+
+
+
+
 <tr><td>DEX</td>
 <td><input id="dex" type="number" min="1" value="10" onchange="calcDEX();"></td><td id="dexC">0</td>
 <td id="dexR">Average</td></tr>
