@@ -12,14 +12,24 @@ let str = 11;
 let i = 29;
 while(i >= 0) {
 	if(str >= STRs[i]) {
-		foo(str, lifts[i], lifts[i+1]);
+		foo(str, i);
 		return;
 	}
 	i--;
-}
+};
 
-function foo(X, Y, Z) {
-	console.log("str:" + X);
-	console.log("0:" + Y);
-	console.log("1:" + Z);
-}
+function foo(str, i) {
+	console.log(str);
+	console.log(i);
+	if(str == STRs[i]) {
+		console.log(":" + lifts[i]);
+		return;
+	}
+	let high = STRs[i+1];
+	let low = STRs[i];
+	let delta = high - low;
+	console.log(low + "," + high + " " + delta);
+};
+
+
+
