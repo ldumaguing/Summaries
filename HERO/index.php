@@ -21,9 +21,9 @@
 <th>Notes</th>
 </tr>
 <tr><td>STR</td>
-<td><input id="str" type="number" min="1" value="10" onchange="calcSTR();"></td><td id="strC">0</td>
+<td><input id="str" type="number" min="1" value="10" onchange="calcSTR()"></td><td id="strC">0</td>
 <td id="strR">Average</td>
-<td>Lift 100 kg (220 lbs); 2d HTH damage [1]</td>
+<td>Lift <span id="kg">100 kg</span> (220 lbs); 2d HTH damage [1]</td>
 </tr>
 
 
@@ -138,7 +138,7 @@
 <br>
 <div>
 
-<button type="button" onclick="calculate();">Calculate Cost</button>
+<button type="button" onclick="calcCharPts();">Calculate Cost</button>
 <b><span id="cost">0</span> points</b>
 </div>
 
